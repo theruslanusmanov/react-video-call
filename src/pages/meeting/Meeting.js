@@ -164,13 +164,20 @@ const Meeting = () => {
 
   return (
     <div className="meeting">
-      <h1>Meeting</h1>
       <div className="video-grid" id="video">
         <div className="video-view">
           <div id="local_stream" className="video-placeholder"/>
-          <div id="local_video_info" className="video-profile hide"/>
+          <div id="local_video_info" className="video-profile float-title hide">Room #{ options.channel }</div>
           <div id="video_autoplay_local"
                className="autoplay-fallback hide"/>
+        </div>
+        <div className="video-grid-panel">
+          <div className="video-view--small">
+            <div id="local_stream" className="video-placeholder"/>
+            <div id="local_video_info" className="video-profile float-title hide">Room #{ options.channel }</div>
+            <div id="video_autoplay_local"
+                 className="autoplay-fallback hide"/>
+          </div>
         </div>
       </div>
     </div>
