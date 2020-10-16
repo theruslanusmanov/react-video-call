@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import AgoraRTC from 'agora-rtc-sdk'
 import './Meeting.scss'
 
@@ -21,6 +21,8 @@ const options = {
 }
 
 const Meeting = () => {
+
+  const [id, setId] = useState();
 
   const initClient = () => {
     // Create a client
@@ -73,19 +75,20 @@ const Meeting = () => {
 
   const subscribeToStream = () => {
     rtc.client.on('stream-added', function (evt) {
-      var remoteStream = evt.stream
-      var id = remoteStream.getId()
+      const remoteStream = evt.stream
+      const id = remoteStream.getId()
       if (id !== rtc.params.uid) {
         rtc.client.subscribe(remoteStream, function (err) {
           console.log('stream subscribe failed', err)
         })
       }
+      setId(id);
       console.log('stream-added remote-uid: ', id)
     })
 
     rtc.client.on('stream-subscribed', function (evt) {
-      var remoteStream = evt.stream
-      var id = remoteStream.getId()
+      const remoteStream = evt.stream
+      const id = remoteStream.getId()
       // Add a view for the remote stream.
       addView(id)
       // Play the remote stream.
@@ -94,8 +97,8 @@ const Meeting = () => {
     })
 
     rtc.client.on('stream-removed', function (evt) {
-      var remoteStream = evt.stream
-      var id = remoteStream.getId()
+      const remoteStream = evt.stream
+      const id = remoteStream.getId()
       // Stop playing the remote stream.
       remoteStream.stop('remote_video_' + id)
       // Remove the view of the remote stream.
@@ -113,8 +116,8 @@ const Meeting = () => {
       rtc.localStream.close()
       // Stop playing the remote streams and remove the views
       while (rtc.remoteStreams.length > 0) {
-        var stream = rtc.remoteStreams.shift()
-        var id = stream.getId()
+        const stream = rtc.remoteStreams.shift()
+        const id = stream.getId()
         stream.stop()
         removeView(id)
       }
@@ -167,14 +170,14 @@ const Meeting = () => {
       <div className="video-grid" id="video">
         <div className="video-view">
           <div id="local_stream" className="video-placeholder"/>
-          <div id="local_video_info" className="video-profile float-title hide">Room #{ options.channel }</div>
+          <div id="local_video_info" className="video-profile float-title hide">ID #{ id }</div>
           <div id="video_autoplay_local"
                className="autoplay-fallback hide"/>
         </div>
         <div className="video-grid-panel">
           <div className="video-view--small">
             <div id="local_stream" className="video-placeholder"/>
-            <div id="local_video_info" className="video-profile float-title hide">Room #{ options.channel }</div>
+            <div id="local_video_info" className="video-profile float-title hide">ID #{ options.channel }</div>
             <div id="video_autoplay_local"
                  className="autoplay-fallback hide"/>
           </div>

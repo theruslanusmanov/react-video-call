@@ -7,7 +7,7 @@ const Login = ({onJoin}) => {
   return (
     <div className="login">
       <h1>Login</h1>
-      <input type="text" value={room} onChange={e => setRoom(e.target.value)}/>
+      <input type="text" placeholder="Room name..." value={room} onChange={e => setRoom(e.target.value)}/>
       <button onClick={() => onJoin(room)}>Join</button>
     </div>
   )
