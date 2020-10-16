@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AgoraRTC from 'agora-rtc-sdk'
 import './Meeting.scss'
 
-const $ = (selector) => document.querySelectorAll(selector);
+const $ = (selector) => document.querySelectorAll(selector)
 
 const rtc = {
   client: null,
@@ -22,7 +22,7 @@ const options = {
 
 const Meeting = () => {
 
-  const [id, setId] = useState();
+  const [id, setId] = useState()
 
   const initClient = () => {
     // Create a client
@@ -82,7 +82,7 @@ const Meeting = () => {
           console.log('stream subscribe failed', err)
         })
       }
-      setId(id);
+      setId(id)
       console.log('stream-added remote-uid: ', id)
     })
 
@@ -167,17 +167,22 @@ const Meeting = () => {
 
   return (
     <div className="meeting">
+      <div className="title">Room <span>#{options.channel}</span></div>
       <div className="video-grid" id="video">
         <div className="video-view">
           <div id="local_stream" className="video-placeholder"/>
-          <div id="local_video_info" className="video-profile float-title hide">ID #{ id }</div>
+          <div id="local_video_info"
+               className="video-profile float-title hide">ID #{id} <span>YOU</span></div>
           <div id="video_autoplay_local"
                className="autoplay-fallback hide"/>
         </div>
         <div className="video-grid-panel">
           <div className="video-view--small">
             <div id="local_stream" className="video-placeholder"/>
-            <div id="local_video_info" className="video-profile float-title hide">ID #{ options.channel }</div>
+            <div id="local_video_info"
+                 className="video-profile float-title hide">
+              ID #{options.channel}
+            </div>
             <div id="video_autoplay_local"
                  className="autoplay-fallback hide"/>
           </div>

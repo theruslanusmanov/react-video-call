@@ -1,16 +1,41 @@
 .meeting {
   height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: bold;
+
+  span {
+    color: lawngreen;
+  }
 }
 
 .float-title {
+  box-sizing: border-box;
+  width: 100%;
   font-size: 12pt;
   position: absolute;
   color: #fff;
   font-weight: bold;
-  top: 10pt;
-  left: 10pt;
+  top: 0;
+  left: 0;
+  padding: 12pt;
   z-index: 1;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    padding: 0 4px;
+    font-size: 12pt;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+  }
 }
 
 .video-grid {
