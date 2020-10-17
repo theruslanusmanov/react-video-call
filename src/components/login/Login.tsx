@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Login.scss';
 
+// @ts-ignore
 const Login = ({onJoin}) => {
   const [room, setRoom] = useState('')
 

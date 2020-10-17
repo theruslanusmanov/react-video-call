@@ -1472,6 +1472,11 @@
   resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
   integrity sha512-oZ0Ib5I4Z2pUEcoo95cT1cr6slco9WY7yiPpG+RGNkj8YcYgJnM7pXmYmorNOReh8MIGcKSqXyeGjxnr8YiZbA==
 
+"@types/agora-rtc-sdk@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/agora-rtc-sdk/-/agora-rtc-sdk-3.1.0.tgz#e71e1b7350be71c4410aa0aee95682862a83bd9b"
+  integrity sha512-SsYMK/VlvPMg7PoEQfC1/eh4I9RYqrBVBy/0s29HLq3z89a7SeokMdwHlr02aP7GeRls5q+9zC5cFBqZVZPrrg==
+
 "@types/aria-query@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.0.tgz#14264692a9d6e2fa4db3df5e56e94b5e25647ac0"

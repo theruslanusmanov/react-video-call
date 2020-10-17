@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 const Welcome = () => {
   let history = useHistory();
 
-  const onJoin = (room) => {
+  const onJoin = (room: string) => {
     history.push('/meeting');
   }
 
