@@ -2,6 +2,7 @@ class Streams {
 
   public mainStreamId = '';
   public mainStream: any;
+  public localStream: any;
 
   private list: any[] = [];
 
