@@ -20,6 +20,8 @@ const options = {
   token: '006818ec1aee6604710974eb1c9a639a76bIACTRrlnYFbBRDq4c0xG3LJe32pwUVCOSzbZuQPXjMQsL3ZXrgMAAAAAEABEZ8fls9yKXwEAAQCy3Ipf',
 }
 
+let streamList = [];
+
 const Meeting = () => {
 
   const [id, setId] = useState()
@@ -90,9 +92,10 @@ const Meeting = () => {
       const remoteStream = evt.stream
       const id = remoteStream.getId()
       // Add a view for the remote stream.
-      addView(id)
+      // addView(remoteStream)
+      addStream(remoteStream);
       // Play the remote stream.
-      remoteStream.play('remote_video_' + id)
+      // remoteStream.play('remote_video_' + id)
       console.log('stream-subscribed remote-uid: ', id)
     })
 
@@ -158,6 +161,36 @@ const Meeting = () => {
     }
   }
 
+  // Helper function to add stream to UI
+  const addStream = (stream, push = false) => {
+    console.log('add strem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    let id = stream.getId()
+    // Check for redundant
+    let redundant = streamList.some(item => {
+      return item.getId() === id
+    })
+    if (redundant) {
+      return
+    }
+    // Do push for localStream and unshift for other streams
+    push ? streamList.push(stream) : streamList.unshift(stream);
+
+    const viewContainer = document.getElementById('video-grid-panel');
+    const videoView = document.createElement('div');
+    videoView.className = 'video-view--small';
+    videoView.innerHTML = `
+      <div id="local_stream_${id}" className="video-placeholder"/>
+      <div id="local_video_info"
+           className="video-profile float-title hide">
+        ID #${id}
+      </div>
+    `;
+
+    viewContainer.appendChild(videoView);
+
+    stream.play(`local_stream_${id}`);
+  }
+
   useEffect(() => {
     initClient()
     joinChannel()
@@ -172,11 +205,12 @@ const Meeting = () => {
         <div className="video-view">
           <div id="local_stream" className="video-placeholder"/>
           <div id="local_video_info"
-               className="video-profile float-title hide">ID #{id} <span>YOU</span></div>
+               className="video-profile float-title hide">ID #{id}
+            <span>YOU</span></div>
           <div id="video_autoplay_local"
                className="autoplay-fallback hide"/>
         </div>
-        <div className="video-grid-panel">
+        <div className="video-grid-panel" id="video-grid-panel">
           <div className="video-view--small">
             <div id="local_stream" className="video-placeholder"/>
             <div id="local_video_info"
