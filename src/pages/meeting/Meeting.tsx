@@ -3,6 +3,8 @@ import './Meeting.scss'
 import RTC from '../../agora/RTC'
 import Streams from '../../agora/Streams'
 import StreamEvents from '../../agora/StreamEvents'
+// @ts-ignore
+import AgoraRTC from 'agora-rtc-sdk'
 
 const $ = (selector: string) => document.querySelectorAll(selector)
 
@@ -14,7 +16,6 @@ const Meeting = () => {
       screen: true,
       video: false,
       audio: false,
-      extensionId: "minllpmhdgpndnkomcoccfekfegnlikg",
     };
     let defaultConfig = {
       streamID: uid,

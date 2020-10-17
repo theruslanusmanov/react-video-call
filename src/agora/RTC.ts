@@ -12,14 +12,14 @@ class RTC {
 
   private appID: string
   private token: string
-  private uid: string
+  private uid: any
 
   constructor () {
     this.channel = 'testChannel'
 
     this.appID = '818ec1aee6604710974eb1c9a639a76b'
-    this.token = '006818ec1aee6604710974eb1c9a639a76bIACTRrlnYFbBRDq4c0xG3LJe32pwUVCOSzbZuQPXjMQsL3ZXrgMAAAAAEABEZ8fls9yKXwEAAQCy3Ipf'
-    this.uid = ''
+    this.token = '006818ec1aee6604710974eb1c9a639a76bIACQViTdMrHFcu5PibYjEsgVmvxghFboAEOu8Q+tDVwTqnZXrgMAAAAAEAA1HXOd45GMXwEAAQDjkYxf'
+    this.uid = undefined
 
     this.config = {
       mode: 'rtc',
