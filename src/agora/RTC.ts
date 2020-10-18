@@ -18,7 +18,7 @@ class RTC {
     this.channel = 'testChannel'
 
     this.appID = '818ec1aee6604710974eb1c9a639a76b'
-    this.token = '006818ec1aee6604710974eb1c9a639a76bIACQViTdMrHFcu5PibYjEsgVmvxghFboAEOu8Q+tDVwTqnZXrgMAAAAAEAA1HXOd45GMXwEAAQDjkYxf'
+    this.token = '006818ec1aee6604710974eb1c9a639a76bIACSSYqAXQ/lNTE+WeDa37cIzUtP5HyKBCZm+EDvEb5RC3ZXrgMAAAAAEAA1HXOdyZKNXwEAAQDIko1f'
     this.uid = undefined
 
     this.config = {
